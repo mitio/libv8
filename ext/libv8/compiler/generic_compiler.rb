@@ -31,7 +31,8 @@ module Libv8
       end
 
       def call(*arguments)
-        Open3.capture3 arguments.unshift(@path).join(' ')
+        command = arguments.unshift(@path).join(' ')
+        `#{command} 2>&1`.split("\n")
       end
     end
   end
